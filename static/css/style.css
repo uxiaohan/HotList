@@ -61,6 +61,7 @@ body #main header .logo h1 {
 body #main header .logo h1 img {
   margin-right: 6px;
   display: block;
+  border-radius: 50%;
   width: 28px;
   height: 28px;
 }
