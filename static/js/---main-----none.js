@@ -2,8 +2,8 @@
  * @Author: Han
  * @Date: 2022-03-18 11:44:52
  * @LastEditors: Han
- * @LastEditTime: 2022-03-18 14:54:24
- * @FilePath: \Hotlist\HotList\static\js\main.js
+ * @LastEditTime: 2022-03-18 15:00:42
+ * @FilePath: \Hotlist\HotList\static\js\---main-----none.js
  */
 var app = new Vue({
   el: '#main',
@@ -68,7 +68,6 @@ var app = new Vue({
     this.clientKey = /Android|iPhone|SymbianOS|Windows Phone|iPad|webOS|BlackBerry|iPod/i.test(navigator.userAgent) ? 'mobilUrl' : 'url';
     const keyArr = ['huPu', '36Ke', 'zhihuHot', 'baiduRD', 'bili', 'history', 'baiduRY', 'wbHot', 'douyinHot', 'douban', 'ssPai', 'itInfo', 'itNews'];
     keyArr.forEach(itm => {
-      this.JSONDATAS[itm].ref = true
       this.getDatas(itm)
     })
   },
@@ -83,6 +82,7 @@ var app = new Vue({
           type: key
         }
       })
+      console.log(data);
       if (data.success == true) {
         data.ref = false
         this.JSONDATAS[key] = data
