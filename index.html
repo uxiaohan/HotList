@@ -1,0 +1,353 @@
+<!--
+ * @Author: Han
+ * @Date: 2022-03-18 09:36:56
+ * @LastEditors: Han
+ * @LastEditTime: 2022-03-18 14:51:04
+ * @FilePath: \Hotlist\index.html
+-->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>今日热榜 - 提供热榜各站热榜热搜聚合</title>
+  <meta name="keywords"
+    content="今日热榜,热榜,热搜,热点,百度热点采集,36氪24小时热榜,哔哩哔哩全站日榜,豆瓣小组精选,历史上的今天,少数派最热文章,百度热点,微博热搜,知乎热榜,抖音热点,IT资讯热榜,最新,百度贴吧热议,虎扑步行街">
+  <meta name="description"
+    content="今日热榜 - 提供百度热点采集、36氪24小时热榜、哔哩哔哩全站日榜、豆瓣小组精选、历史上的今天、少数派最热文章、百度热点、微博热搜、知乎热榜、抖音热点、IT资讯热榜,最新、百度贴吧热议、虎扑步行街聚合">
+  <meta property="og:description"
+    content="今日热榜 - 提供百度热点采集、36氪24小时热榜、哔哩哔哩全站日榜、豆瓣小组精选、历史上的今天、少数派最热文章、百度热点、微博热搜、知乎热榜、抖音热点、IT资讯热榜,最新、百度贴吧热议、虎扑步行街聚合">
+  <meta property="og:site_name"
+    content="今日热榜 - 提供百度热点采集、36氪24小时热榜、哔哩哔哩全站日榜、豆瓣小组精选、历史上的今天、少数派最热文章、百度热点、微博热搜、知乎热榜、抖音热点、IT资讯热榜,最新、百度贴吧热议、虎扑步行街聚合">
+  <meta property="og:title"
+    content="今日热榜 - 提供百度热点采集、36氪24小时热榜、哔哩哔哩全站日榜、豆瓣小组精选、历史上的今天、少数派最热文章、百度热点、微博热搜、知乎热榜、抖音热点、IT资讯热榜,最新、百度贴吧热议、虎扑步行街聚合">
+  <meta property="og:url" content="https://wy.vvhan.com/" />
+  <meta itemprop="image" content="https://q1.qlogo.cn/g?b=qq&s=100&nk=1655466387" />
+  <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body>
+  <section id="main">
+    <header>
+      <div class="logo">
+        <h1><img src="https://vip.91-av.ml/static/images/logo.png"> <a href="javascript:;">今日热榜</a> </h1>
+      </div>
+      <div class="link">
+        <h2>今日热榜 - 提供热榜各站热榜热搜聚合</h2>
+      </div>
+    </header>
+    <div class="title">
+      <h2>今日热榜</h2>
+    </div>
+    <div class="contant">
+      <div class="box">
+        <div class="refd" v-show="JSONDATAS['baiduRD']['ref']">
+          <div class="refround"></div>
+        </div>
+        <div class="div_s">
+          <div class="div_s-title">
+            <div class="l">
+              <img src="./static/images/baidu.png">
+              <h3>百度热点</h3>
+            </div>
+            <div class="r">
+              <span>指数</span>
+            </div>
+          </div>
+          <ul class="div_s-con">
+            <li v-for="itm in JSONDATAS['baiduRD']['data']" :key="itm.index"><span>{{itm.index}}</span><a
+                :href="itm[clientKey]" target="_blank"><span>{{itm.title}}</span><span>{{itm.hot}}</span></a></li>
+          </ul>
+        </div>
+        <div class="ref">
+          <img src="./static//images/ref.jpg" @click="getDatas('baiduRD')">
+        </div>
+      </div>
+      <div class="box">
+        <div class="refd" v-show="JSONDATAS['huPu']['ref']">
+          <div class="refround"></div>
+        </div>
+        <div class="div_s">
+          <div class="div_s-title">
+            <div class="l">
+              <img src="./static/images/hupu.png">
+              <h3>虎扑</h3>
+            </div>
+            <div class="r">
+              <span>步行街热帖</span>
+            </div>
+          </div>
+          <ul class="div_s-con">
+            <li v-for="itm in JSONDATAS['huPu']['data']" :key="itm.index"><span>{{itm.index}}</span><a
+                :href="itm[clientKey]" target="_blank"><span>{{itm.title}}</span><span>{{itm.hot}}</span></a></li>
+          </ul>
+        </div>
+        <div class="ref">
+          <img src="./static//images/ref.jpg" @click="getDatas('huPu')">
+        </div>
+      </div>
+      <div class="box">
+        <div class="refd" v-show="JSONDATAS['36Ke']['ref']">
+          <div class="refround"></div>
+        </div>
+        <div class="div_s">
+          <div class="div_s-title">
+            <div class="l">
+              <img src="./static/images/36kr.png">
+              <h3>36氪</h3>
+            </div>
+            <div class="r">
+              <span>24小时热榜</span>
+            </div>
+          </div>
+          <ul class="div_s-con">
+            <li v-for="itm in JSONDATAS['36Ke']['data']" :key="itm.index"><span>{{itm.index}}</span><a
+                :href="itm[clientKey]" target="_blank"><span>{{itm.title}}</span><span>{{itm.hot}}</span></a></li>
+          </ul>
+        </div>
+        <div class="ref">
+          <img src="./static//images/ref.jpg" @click="getDatas('36Ke')">
+        </div>
+      </div>
+      <div class="box">
+        <div class="refd" v-show="JSONDATAS['bili']['ref']">
+          <div class="refround"></div>
+        </div>
+        <div class="div_s">
+          <div class="div_s-title">
+            <div class="l">
+              <img src="./static/images/bilibili.png">
+              <h3>哔哩哔哩</h3>
+            </div>
+            <div class="r">
+              <span>全站日榜</span>
+            </div>
+          </div>
+          <ul class="div_s-con">
+            <li v-for="itm in JSONDATAS['bili']['data']" :key="itm.index"><span>{{itm.index}}</span><a
+                :href="itm[clientKey]" target="_blank"><span>{{itm.title}}</span><span>{{itm.hot}}</span></a></li>
+          </ul>
+        </div>
+        <div class="ref">
+          <img src="./static//images/ref.jpg" @click="getDatas('bili')">
+        </div>
+      </div>
+      <div class="box">
+        <div class="refd" v-show="JSONDATAS['ssPai']['ref']">
+          <div class="refround"></div>
+        </div>
+        <div class="div_s">
+          <div class="div_s-title">
+            <div class="l">
+              <img src="./static/images/sspai.png">
+              <h3>少数派</h3>
+            </div>
+            <div class="r">
+              <span>热门文章</span>
+            </div>
+          </div>
+          <ul class="div_s-con">
+            <li v-for="itm in JSONDATAS['ssPai']['data']" :key="itm.index"><span>{{itm.index}}</span><a
+                :href="itm[clientKey]" target="_blank"><span>{{itm.title}}</span><span>{{itm.hot}}</span></a></li>
+          </ul>
+        </div>
+        <div class="ref">
+          <img src="./static//images/ref.jpg" @click="getDatas('ssPai')">
+        </div>
+      </div>
+      <div class="box">
+        <div class="refd" v-show="JSONDATAS['history']['ref']">
+          <div class="refround"></div>
+        </div>
+        <div class="div_s">
+          <div class="div_s-title">
+            <div class="l">
+              <img src="./static/images/lssdjt.png">
+              <h3>历史上的今天</h3>
+            </div>
+            <div class="r">
+              <span></span>
+            </div>
+          </div>
+          <ul class="div_s-con">
+            <li v-for="itm in JSONDATAS['history']['data']" :key="itm.index"><span>{{itm.index}}</span><a
+                :href="itm[clientKey]" target="_blank"><span>{{itm.title}}</span><span>{{itm.hot}}</span></a></li>
+          </ul>
+        </div>
+        <div class="ref">
+          <img src="./static//images/ref.jpg" @click="getDatas('history')">
+        </div>
+      </div>
+      <div class="box">
+        <div class="refd" v-show="JSONDATAS['wbHot']['ref']">
+          <div class="refround"></div>
+        </div>
+        <div class="div_s">
+          <div class="div_s-title">
+            <div class="l">
+              <img src="./static/images/weibo.png">
+              <h3>微博</h3>
+            </div>
+            <div class="r">
+              <span>热搜榜</span>
+            </div>
+          </div>
+          <ul class="div_s-con">
+            <li v-for="itm in JSONDATAS['wbHot']['data']" :key="itm.index"><span>{{itm.index}}</span><a
+                :href="itm[clientKey]" target="_blank"><span>{{itm.title}}</span><span>{{itm.hot}}</span></a></li>
+          </ul>
+        </div>
+        <div class="ref">
+          <img src="./static//images/ref.jpg" @click="getDatas('wbHot')">
+        </div>
+      </div>
+      <div class="box">
+        <div class="refd" v-show="JSONDATAS['zhihuHot']['ref']">
+          <div class="refround"></div>
+        </div>
+        <div class="div_s">
+          <div class="div_s-title">
+            <div class="l">
+              <img src="./static/images/zhihu.png">
+              <h3>知乎热榜</h3>
+            </div>
+            <div class="r">
+              <span>热度</span>
+            </div>
+          </div>
+          <ul class="div_s-con">
+            <li v-for="itm in JSONDATAS['zhihuHot']['data']" :key="itm.index"><span>{{itm.index}}</span><a
+                :href="itm[clientKey]" target="_blank"><span>{{itm.title}}</span><span>{{itm.hot}}</span></a></li>
+          </ul>
+        </div>
+        <div class="ref">
+          <img src="./static//images/ref.jpg" @click="getDatas('zhihuHot')">
+        </div>
+      </div>
+      <div class="box">
+        <div class="refd" v-show="JSONDATAS['douyinHot']['ref']">
+          <div class="refround"></div>
+        </div>
+        <div class="div_s">
+          <div class="div_s-title">
+            <div class="l">
+              <img src="./static/images/douyin.png">
+              <h3>抖音</h3>
+            </div>
+            <div class="r">
+              <span>热点榜</span>
+            </div>
+          </div>
+          <ul class="div_s-con">
+            <li v-for="itm in JSONDATAS['douyinHot']['data']" :key="itm.index"><span>{{itm.index}}</span><a
+                :href="itm[clientKey]" target="_blank"><span>{{itm.title}}</span><span>{{itm.hot}}</span></a></li>
+          </ul>
+        </div>
+        <div class="ref">
+          <img src="./static//images/ref.jpg" @click="getDatas('douyinHot')">
+        </div>
+      </div>
+      <div class="box">
+        <div class="refd" v-show="JSONDATAS['itInfo']['ref']">
+          <div class="refround"></div>
+        </div>
+        <div class="div_s">
+          <div class="div_s-title">
+            <div class="l">
+              <img src="./static/images/ithome.png">
+              <h3>IT资讯热榜</h3>
+            </div>
+            <div class="r">
+              <span></span>
+            </div>
+          </div>
+          <ul class="div_s-con">
+            <li v-for="itm in JSONDATAS['itInfo']['data']" :key="itm.index"><span>{{itm.index}}</span><a
+                :href="itm[clientKey]" target="_blank"><span>{{itm.title}}</span><span>{{itm.hot}}</span></a></li>
+          </ul>
+        </div>
+        <div class="ref">
+          <img src="./static//images/ref.jpg" @click="getDatas('itInfo')">
+        </div>
+      </div>
+      <div class="box">
+        <div class="refd" v-show="JSONDATAS['itNews']['ref']">
+          <div class="refround"></div>
+        </div>
+        <div class="div_s">
+          <div class="div_s-title">
+            <div class="l">
+              <img src="./static/images/ithome.png">
+              <h3>IT资讯最新</h3>
+            </div>
+            <div class="r">
+              <span></span>
+            </div>
+          </div>
+          <ul class="div_s-con">
+            <li v-for="itm in JSONDATAS['itNews']['data']" :key="itm.index"><span>{{itm.index}}</span><a
+                :href="itm[clientKey]" target="_blank"><span>{{itm.title}}</span><span>{{itm.hot}}</span></a></li>
+          </ul>
+        </div>
+        <div class="ref">
+          <img src="./static//images/ref.jpg" @click="getDatas('itNews')">
+        </div>
+      </div>
+      <div class="box">
+        <div class="refd" v-show="JSONDATAS['baiduRY']['ref']">
+          <div class="refround"></div>
+        </div>
+        <div class="div_s">
+          <div class="div_s-title">
+            <div class="l">
+              <img src="./static/images/baidu.png">
+              <h3>百度贴吧</h3>
+            </div>
+            <div class="r">
+              <span>热议榜</span>
+            </div>
+          </div>
+          <ul class="div_s-con">
+            <li v-for="itm in JSONDATAS['baiduRY']['data']" :key="itm.index"><span>{{itm.index}}</span><a
+                :href="itm[clientKey]" target="_blank"><span>{{itm.title}}</span><span>{{itm.hot}}</span></a></li>
+          </ul>
+        </div>
+        <div class="ref">
+          <img src="./static//images/ref.jpg" @click="getDatas('baiduRY')">
+        </div>
+      </div>
+      <div class="box">
+        <div class="refd" v-show="JSONDATAS['douban']['ref']">
+          <div class="refround"></div>
+        </div>
+        <div class="div_s">
+          <div class="div_s-title">
+            <div class="l">
+              <img src="./static/images/douban.png">
+              <h3>豆瓣小组</h3>
+            </div>
+            <div class="r">
+              <span>讨论精选</span>
+            </div>
+          </div>
+          <ul class="div_s-con">
+            <li v-for="itm in JSONDATAS['douban']['data']" :key="itm.index"><span>{{itm.index}}</span><a
+                :href="itm[clientKey]" target="_blank"><span>{{itm.title}}</span><span>{{itm.hot}}</span></a></li>
+          </ul>
+        </div>
+        <div class="ref">
+          <img src="./static//images/ref.jpg" @click="getDatas('douban')">
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+  <script src="https://cdn.staticfile.org/axios/0.6.0/axios.min.js"></script>
+  <script src="./static/js/main.js"></script>
+</body>
+
+</html>
