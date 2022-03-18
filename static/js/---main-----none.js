@@ -2,7 +2,7 @@
  * @Author: Han
  * @Date: 2022-03-18 11:44:52
  * @LastEditors: Han
- * @LastEditTime: 2022-03-18 15:00:42
+ * @LastEditTime: 2022-03-18 15:56:51
  * @FilePath: \Hotlist\HotList\static\js\---main-----none.js
  */
 var app = new Vue({
@@ -67,14 +67,24 @@ var app = new Vue({
     console.groupEnd();
     this.clientKey = /Android|iPhone|SymbianOS|Windows Phone|iPad|webOS|BlackBerry|iPod/i.test(navigator.userAgent) ? 'mobilUrl' : 'url';
     const keyArr = ['huPu', '36Ke', 'zhihuHot', 'baiduRD', 'bili', 'history', 'baiduRY', 'wbHot', 'douyinHot', 'douban', 'ssPai', 'itInfo', 'itNews'];
-    keyArr.forEach(itm => {
-      this.getDatas(itm)
-    })
+    // keyArr.forEach(itm => {
+    //   this.getDatas(itm)
+    // })
+    this.getDatas('huPu')
   },
   methods: {
     async getDatas(key) {
       if (this.JSONDATAS[key].ref == true) return;
       this.JSONDATAS[key].ref = true
+      // const ajax = new XMLHttpRequest();
+      // ajax.open("get", `https://api.vvhan.com/api/hotlist?type=${key}`, true);
+      // ajax.send();
+      // ajax.onreadystatechange = () => {
+      //   if (ajax.readyState === 4 && ajax.status === 200) {
+      //     const _res = JSON.parse(ajax.responseText)
+      //     console.log(_res);
+      //   }
+      // }
       const {
         data
       } = await axios.get('https://api.vvhan.com/api/hotlist', {
@@ -83,10 +93,10 @@ var app = new Vue({
         }
       })
       console.log(data);
-      if (data.success == true) {
-        data.ref = false
-        this.JSONDATAS[key] = data
-      }
+      // if (data.success == true) {
+      //   data.ref = false
+      //   this.JSONDATAS[key] = data
+      // }
     }
   },
 })
