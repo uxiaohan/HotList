@@ -2,7 +2,7 @@
  * @Author: Han
  * @Date: 2022-03-18 11:44:52
  * @LastEditors: Han
- * @LastEditTime: 2022-03-18 16:35:19
+ * @LastEditTime: 2022-03-18 17:19:06
  * @FilePath: \Hotlist\HotList\static\js\---main-----none.js
  */
 var app = new Vue({
@@ -11,6 +11,9 @@ var app = new Vue({
     return {
       clientKey: 'url',
       JSONDATAS: {
+        allJson: {
+          data: []
+        },
         huPu: {
           data: []
         },
@@ -66,14 +69,17 @@ var app = new Vue({
     console.log("%c \u660E\u4EAE\u4E0E\u6666\u6697\u603B\u90FD\u662F\u4F1A\u6709\u7684\u5427", "color: #ffffff;background: #6666FF;padding:5px");
     console.groupEnd();
     this.clientKey = /Android|iPhone|SymbianOS|Windows Phone|iPad|webOS|BlackBerry|iPod/i.test(navigator.userAgent) ? 'mobilUrl' : 'url';
-    const keyArr = ['huPu', '36Ke', 'zhihuHot', 'baiduRD', 'bili', 'history', 'baiduRY', 'wbHot', 'douyinHot', 'douban', 'ssPai', 'itInfo', 'itNews'];
-    keyArr.forEach(itm => {
-      this.getDatas(itm)
-    })
+    this.getDatas()
   },
   methods: {
-    async getDatas(key) {
+    async getDatas(key = 'allJson') {
+      const keyArr = ['huPu', '36Ke', 'zhihuHot', 'baiduRD', 'bili', 'history', 'baiduRY', 'wbHot', 'douyinHot', 'douban', 'ssPai', 'itInfo', 'itNews'];
+      key == 'allJson' && keyArr.forEach(itm => {
+        this.JSONDATAS[itm].ref = true
+      })
+
       if (this.JSONDATAS[key].ref == true) return;
+
       this.JSONDATAS[key].ref = true
       const {
         data
@@ -83,8 +89,18 @@ var app = new Vue({
         }
       })
       if (data.success == true) {
-        data.ref = false
-        this.JSONDATAS[key] = data
+        const {
+          data: _res
+        } = data
+        if (key == 'allJson') {
+          keyArr.forEach(itm => {
+            _res[itm]['ref'] = false
+            this.JSONDATAS[itm] = _res[itm]
+          })
+        } else {
+          data.ref = false
+          this.JSONDATAS[key] = data
+        }
       }
     }
   },
