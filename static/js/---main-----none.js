@@ -2,7 +2,7 @@
  * @Author: Han
  * @Date: 2022-03-18 11:44:52
  * @LastEditors: Han
- * @LastEditTime: 2022-03-18 16:06:51
+ * @LastEditTime: 2022-03-18 16:10:06
  * @FilePath: \Hotlist\HotList\static\js\---main-----none.js
  */
 var app = new Vue({
@@ -75,6 +75,7 @@ var app = new Vue({
   },
   methods: {
     async getDatas(key) {
+      (this.JSONDATAS[key].ref == undefined) && (this.JSONDATAS[key].ref = false)
       if (this.JSONDATAS[key].ref == true) return;
       this.JSONDATAS[key].ref = true
       const {
