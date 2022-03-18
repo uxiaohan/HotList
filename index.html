@@ -27,10 +27,12 @@
     <meta itemprop="image" content="https://q1.qlogo.cn/g?b=qq&s=100&nk=1655466387" />
     <link rel="stylesheet" href="./static/css/style.css">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.15.1/theme-chalk/index.min.css">
     <script charset="UTF-8" id="LA_COLLECT" src="https://sdk.51.la/js-sdk-pro.min.js"></script>
     <script>LA.init({ id: "Jd64LhB9258AxGCA", ck: "Jd64LhB9258AxGCA" })</script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
     <script src="https://cdn.staticfile.org/axios/0.26.1/axios.min.js"></script>
+    <script src="https://cdn.staticfile.org/element-ui/2.15.1/index.min.js"></script>
 </head>
 
 <body>
@@ -357,6 +359,14 @@
         </footer>
     </section>
     <script src="./static/js/main.js"></script>
+    <script>
+        app.$notify({
+            title: '提示',
+            message: '如果没有你想要的，联系我，火速添加！',
+            type: 'warning',
+            offset: 100
+        });
+    </script>
 </body>
 
 </html>
