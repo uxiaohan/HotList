@@ -2,7 +2,7 @@
  * @Author: Han
  * @Date: 2022-03-18 11:44:52
  * @LastEditors: Han
- * @LastEditTime: 2022-03-18 15:56:51
+ * @LastEditTime: 2022-03-18 16:02:51
  * @FilePath: \Hotlist\HotList\static\js\---main-----none.js
  */
 var app = new Vue({
@@ -92,11 +92,10 @@ var app = new Vue({
           type: key
         }
       })
-      console.log(data);
-      // if (data.success == true) {
-      //   data.ref = false
-      //   this.JSONDATAS[key] = data
-      // }
+      if (data.success == true) {
+        data.ref = false
+        this.JSONDATAS[key] = data
+      }
     }
   },
 })
