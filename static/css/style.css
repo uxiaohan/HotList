@@ -227,8 +227,8 @@ body #main .contant .box .div_s .div_s-con li > span {
   width: 18px;
   height: 18px;
   border-radius: 3px;
-  background-color: rgba(124, 124, 124, 0.3);
-  color: #282a2d;
+  background-color: rgb(88, 111, 142);
+  color: #fff;
   font-size: 12px;
   line-height: 18px;
   text-align: center;
@@ -236,18 +236,15 @@ body #main .contant .box .div_s .div_s-con li > span {
 }
 
 body #main .contant .box .div_s .div_s-con li:nth-of-type(1) > span {
-  color: #f9f9f9;
-  background-color: #f53f3f;
+  background-color: rgb(255, 80, 34);
 }
 
 body #main .contant .box .div_s .div_s-con li:nth-of-type(2) > span {
-  color: #f9f9f9;
-  background-color: #c56831;
+  background-color: rgb(255, 144, 38);
 }
 
 body #main .contant .box .div_s .div_s-con li:nth-of-type(3) > span {
-  color: #f9f9f9;
-  background-color: #b89e2c;
+  background-color: rgb(246, 192, 50);
 }
 
 body #main .contant .box .div_s .div_s-con li > a {
