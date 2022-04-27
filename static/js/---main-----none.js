@@ -2,8 +2,8 @@
  * @Author: Han
  * @Date: 2022-03-18 11:44:52
  * @LastEditors: Han
- * @LastEditTime: 2022-03-18 17:19:06
- * @FilePath: \Hotlist\HotList\static\js\---main-----none.js
+ * @LastEditTime: 2022-04-27 16:03:14
+ * @FilePath: \GithubProject\HotList\static\js\---main-----none.js
  */
 var app = new Vue({
   el: '#main',
@@ -52,6 +52,30 @@ var app = new Vue({
         },
         itNews: {
           data: []
+        },
+        wxHot: {
+          data: []
+        },
+        wxJoke: {
+          data: []
+        },
+        wxFood: {
+          data: []
+        },
+        wxKeJi: {
+          data: []
+        },
+        wxLvYou: {
+          data: []
+        },
+        wxMoney: {
+          data: []
+        },
+        wxXingZuo: {
+          data: []
+        },
+        wxBaGua: {
+          data: []
         }
       }
     }
@@ -73,13 +97,11 @@ var app = new Vue({
   },
   methods: {
     async getDatas(key = 'allJson') {
-      const keyArr = ['huPu', '36Ke', 'zhihuHot', 'baiduRD', 'bili', 'history', 'baiduRY', 'wbHot', 'douyinHot', 'douban', 'ssPai', 'itInfo', 'itNews'];
+      const keyArr = ['huPu', '36Ke', 'zhihuHot', 'baiduRD', 'bili', 'history', 'baiduRY', 'wbHot', 'douyinHot', 'douban', 'ssPai', 'itInfo', 'itNews', 'wxHot', 'wxJoke', 'wxFood', 'wxBaGua', 'wxKeJi', 'wxMoney', 'wxXingZuo', 'wxLvYou'];
       key == 'allJson' && keyArr.forEach(itm => {
         this.JSONDATAS[itm].ref = true
       })
-
       if (this.JSONDATAS[key].ref == true) return;
-
       this.JSONDATAS[key].ref = true
       const {
         data
