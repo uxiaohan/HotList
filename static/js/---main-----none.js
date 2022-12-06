@@ -53,30 +53,30 @@ var app = new Vue({
         itNews: {
           data: []
         },
-        wxHot: {
-          data: []
-        },
-        wxJoke: {
-          data: []
-        },
-        wxFood: {
-          data: []
-        },
-        wxKeJi: {
-          data: []
-        },
-        wxLvYou: {
-          data: []
-        },
-        wxMoney: {
-          data: []
-        },
-        wxXingZuo: {
-          data: []
-        },
-        wxBaGua: {
-          data: []
-        }
+        // wxHot: {
+        //   data: []
+        // },
+        // wxJoke: {
+        //   data: []
+        // },
+        // wxFood: {
+        //   data: []
+        // },
+        // wxKeJi: {
+        //   data: []
+        // },
+        // wxLvYou: {
+        //   data: []
+        // },
+        // wxMoney: {
+        //   data: []
+        // },
+        // wxXingZuo: {
+        //   data: []
+        // },
+        // wxBaGua: {
+        //   data: []
+        // }
       }
     }
   },
@@ -97,7 +97,8 @@ var app = new Vue({
   },
   methods: {
     async getDatas(key = 'allJson') {
-      const keyArr = ['huPu', '36Ke', 'zhihuHot', 'baiduRD', 'bili', 'history', 'baiduRY', 'wbHot', 'douyinHot', 'douban', 'ssPai', 'itInfo', 'itNews', 'wxHot', 'wxJoke', 'wxFood', 'wxBaGua', 'wxKeJi', 'wxMoney', 'wxXingZuo', 'wxLvYou'];
+      const keyArr = ['huPu', '36Ke', 'zhihuHot', 'baiduRD', 'bili', 'history', 'baiduRY', 'wbHot', 'douyinHot', 'douban', 'ssPai', 'itInfo', 'itNews'];
+      // const keyArr = ['huPu', '36Ke', 'zhihuHot', 'baiduRD', 'bili', 'history', 'baiduRY', 'wbHot', 'douyinHot', 'douban', 'ssPai', 'itInfo', 'itNews', 'wxHot', 'wxJoke', 'wxFood', 'wxBaGua', 'wxKeJi', 'wxMoney', 'wxXingZuo', 'wxLvYou'];
       key == 'allJson' && keyArr.forEach(itm => {
         this.JSONDATAS[itm].ref = true
       })
