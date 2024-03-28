@@ -2,7 +2,7 @@
     <section>
         <header>
             <div class="l">
-                <img :src="imgUrl(item.name)">
+                <img :src="imgArr[item.name]">
                 <h3>{{ item.name }}</h3>
             </div>
             <div class="r"><span>{{ item.subtitle }}</span></div>
@@ -30,7 +30,16 @@ const refreshFn = () => {
     item.value.data = [];
     setTimeout(() => item.value.data = tempData.value, 1066);
 }
-const imgUrl = (name: string) => new URL(`../assets/images/${name}.webp`, import.meta.url).href
+
+const imgArr = ref<any>({});
+["虎扑", "虎嗅", "今日头条", "微博", "知乎热榜", "知乎日报", "36氪", "IT之家", "woShiPm", "百度热点", "哔哩哔哩", "抖音", "豆瓣小组",].map(async i => {
+    const _ = await import(`../assets/images/${i}.webp`);
+    imgArr.value[i] = _.default
+})
+
+
+// 预加载所有图片
+
 </script>
 
 <style scoped lang="less">
